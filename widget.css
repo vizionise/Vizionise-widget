@@ -18,136 +18,156 @@
   --vai-radius: 16px;
 }
 
+/* ─── Theme Reset ────────────────────────────────────────────────────────────
+   Strip ALL inherited theme styles from every button inside the widget.
+   This prevents WordPress/Elementor themes from forcing their own colors.
+   ─────────────────────────────────────────────────────────────────────────── */
+.vai-launcher,
+.vai-prompt-chip,
+.vai-send-btn,
+.vai-close-btn {
+  all: unset !important;
+  box-sizing: border-box !important;
+  cursor: pointer !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  line-height: 1 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+}
+
 /* Launcher Button */
 .vai-launcher {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  pointer-events: auto;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--vai-accent);
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 700;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  letter-spacing: 0.03em;
-  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 99998;
-  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 24px !important;
+  pointer-events: auto !important;
+  width: 56px !important;
+  height: 56px !important;
+  border-radius: 50% !important;
+  background: #7c3aed !important;
+  color: #fff !important;
+  border: none !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.03em !important;
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.5) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 99998 !important;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s !important;
+  text-transform: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .vai-launcher:hover {
-  background: var(--vai-accent-hover);
-  transform: scale(1.07);
-  box-shadow: 0 6px 28px rgba(124, 58, 237, 0.65);
+  background: #6d28d9 !important;
+  transform: scale(1.07) !important;
+  box-shadow: 0 6px 28px rgba(124, 58, 237, 0.65) !important;
 }
 
 .vai-launcher:active {
-  transform: scale(0.96);
+  transform: scale(0.96) !important;
 }
 
 .vai-launcher-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.15s, transform 0.15s;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.15s, transform 0.15s !important;
 }
 
 .vai-launcher-icon.vai-hidden {
-  opacity: 0;
-  transform: scale(0.5);
-  position: absolute;
+  opacity: 0 !important;
+  transform: scale(0.5) !important;
+  position: absolute !important;
+  pointer-events: none !important;
 }
 
 /* Chat Panel */
 .vai-panel {
-  position: fixed;
-  bottom: 92px;
-  right: 24px;
-  pointer-events: auto;
-  width: 360px;
-  height: 520px;
-  background: var(--vai-bg);
-  border-radius: var(--vai-radius);
-  border: 1px solid var(--vai-border);
-  box-shadow: var(--vai-shadow);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  z-index: 99997;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  transform: translateY(12px) scale(0.97);
-  opacity: 0;
-  pointer-events: none;
+  position: fixed !important;
+  bottom: 92px !important;
+  right: 24px !important;
+  pointer-events: auto !important;
+  width: 360px !important;
+  height: 520px !important;
+  background: #1a1a2e !important;
+  border-radius: 16px !important;
+  border: 1px solid rgba(124, 58, 237, 0.25) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  z-index: 99997 !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  transform: translateY(12px) scale(0.97) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
   transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
-              opacity 0.18s ease;
+              opacity 0.18s ease !important;
+  color: #e2e8f0 !important;
 }
 
 .vai-panel.vai-open {
-  transform: translateY(0) scale(1);
-  opacity: 1;
-  pointer-events: all;
+  transform: translateY(0) scale(1) !important;
+  opacity: 1 !important;
+  pointer-events: all !important;
 }
 
 /* Header */
 .vai-header {
-  background: var(--vai-header-bg);
-  padding: 14px 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  border-bottom: 1px solid var(--vai-border);
-  flex-shrink: 0;
+  background: #16213e !important;
+  padding: 14px 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  border-bottom: 1px solid rgba(124, 58, 237, 0.25) !important;
+  flex-shrink: 0 !important;
 }
 
 .vai-header-avatar {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: var(--vai-accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  font-weight: 700;
-  color: #fff;
-  flex-shrink: 0;
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 50% !important;
+  background: #7c3aed !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  flex-shrink: 0 !important;
 }
 
 .vai-header-info {
-  flex: 1;
+  flex: 1 !important;
 }
 
 .vai-header-title {
-  color: var(--vai-text);
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.2;
-  margin: 0;
+  color: #e2e8f0 !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  margin: 0 !important;
 }
 
 .vai-header-status {
-  color: #4ade80;
-  font-size: 11px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  margin: 2px 0 0;
+  color: #4ade80 !important;
+  font-size: 11px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  margin: 2px 0 0 !important;
 }
 
 .vai-status-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #4ade80;
-  animation: vai-pulse 2s infinite;
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background: #4ade80 !important;
+  animation: vai-pulse 2s infinite !important;
 }
 
 @keyframes vai-pulse {
@@ -156,31 +176,31 @@
 }
 
 .vai-close-btn {
-  background: none;
-  border: none;
-  color: var(--vai-text-muted);
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  transition: color 0.15s, background 0.15s;
+  background: transparent !important;
+  border: none !important;
+  color: #94a3b8 !important;
+  padding: 4px !important;
+  border-radius: 6px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: color 0.15s, background 0.15s !important;
 }
 
 .vai-close-btn:hover {
-  color: var(--vai-text);
-  background: rgba(255, 255, 255, 0.08);
+  color: #e2e8f0 !important;
+  background: rgba(255, 255, 255, 0.08) !important;
 }
 
 /* Messages Area */
 .vai-messages {
-  flex: 1;
-  overflow-y: auto;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  scroll-behavior: smooth;
+  flex: 1 !important;
+  overflow-y: auto !important;
+  padding: 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  scroll-behavior: smooth !important;
 }
 
 .vai-messages::-webkit-scrollbar {
@@ -198,92 +218,96 @@
 
 /* Suggested Prompts */
 .vai-prompts {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 4px;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  margin-bottom: 4px !important;
 }
 
 .vai-prompts-label {
-  color: var(--vai-text-muted);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 2px;
+  color: #94a3b8 !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  margin-bottom: 2px !important;
 }
 
 .vai-prompt-chip {
-  background: rgba(124, 58, 237, 0.12);
-  border: 1px solid var(--vai-border);
-  color: var(--vai-text);
-  border-radius: 20px;
-  padding: 8px 14px;
-  font-size: 12.5px;
-  cursor: pointer;
-  text-align: left;
-  transition: background 0.15s, border-color 0.15s;
-  font-family: inherit;
+  background: rgba(124, 58, 237, 0.12) !important;
+  border: 1px solid rgba(124, 58, 237, 0.25) !important;
+  color: #e2e8f0 !important;
+  border-radius: 20px !important;
+  padding: 8px 14px !important;
+  font-size: 12.5px !important;
+  text-align: left !important;
+  transition: background 0.15s, border-color 0.15s !important;
+  display: block !important;
+  width: 100% !important;
+  text-transform: none !important;
+  font-weight: normal !important;
+  letter-spacing: normal !important;
 }
 
 .vai-prompt-chip:hover {
-  background: rgba(124, 58, 237, 0.25);
-  border-color: var(--vai-accent);
+  background: rgba(124, 58, 237, 0.25) !important;
+  border-color: #7c3aed !important;
 }
 
 /* Message Bubbles */
 .vai-message {
-  display: flex;
-  gap: 8px;
-  max-width: 100%;
+  display: flex !important;
+  gap: 8px !important;
+  max-width: 100% !important;
 }
 
 .vai-message.vai-user {
-  flex-direction: row-reverse;
+  flex-direction: row-reverse !important;
 }
 
 .vai-bubble {
-  padding: 10px 14px;
-  border-radius: 14px;
-  font-size: 13.5px;
-  line-height: 1.55;
-  max-width: 82%;
-  word-break: break-word;
+  padding: 10px 14px !important;
+  border-radius: 14px !important;
+  font-size: 13.5px !important;
+  line-height: 1.55 !important;
+  max-width: 82% !important;
+  word-break: break-word !important;
 }
 
 .vai-message.vai-ai .vai-bubble {
-  background: var(--vai-ai-bubble);
-  color: var(--vai-text);
-  border-bottom-left-radius: 4px;
+  background: #2d2d44 !important;
+  color: #e2e8f0 !important;
+  border-bottom-left-radius: 4px !important;
 }
 
 .vai-message.vai-user .vai-bubble {
-  background: var(--vai-user-bubble);
-  color: #fff;
-  border-bottom-right-radius: 4px;
+  background: #7c3aed !important;
+  color: #fff !important;
+  border-bottom-right-radius: 4px !important;
 }
 
 /* Typing Indicator */
 .vai-typing {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 12px 14px;
-  background: var(--vai-ai-bubble);
-  border-radius: 14px;
-  border-bottom-left-radius: 4px;
-  width: fit-content;
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  padding: 12px 14px !important;
+  background: #2d2d44 !important;
+  border-radius: 14px !important;
+  border-bottom-left-radius: 4px !important;
+  width: fit-content !important;
 }
 
 .vai-typing span {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--vai-text-muted);
-  animation: vai-bounce 1.2s infinite;
+  width: 7px !important;
+  height: 7px !important;
+  border-radius: 50% !important;
+  background: #94a3b8 !important;
+  display: block !important;
+  animation: vai-bounce 1.2s infinite !important;
 }
 
-.vai-typing span:nth-child(2) { animation-delay: 0.2s; }
-.vai-typing span:nth-child(3) { animation-delay: 0.4s; }
+.vai-typing span:nth-child(2) { animation-delay: 0.2s !important; }
+.vai-typing span:nth-child(3) { animation-delay: 0.4s !important; }
 
 @keyframes vai-bounce {
   0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
@@ -292,83 +316,88 @@
 
 /* Input Row */
 .vai-input-row {
-  padding: 12px;
-  border-top: 1px solid var(--vai-border);
-  display: flex;
-  gap: 8px;
-  align-items: flex-end;
-  background: var(--vai-header-bg);
-  flex-shrink: 0;
+  padding: 12px !important;
+  border-top: 1px solid rgba(124, 58, 237, 0.25) !important;
+  display: flex !important;
+  gap: 8px !important;
+  align-items: flex-end !important;
+  background: #16213e !important;
+  flex-shrink: 0 !important;
 }
 
 .vai-input {
-  flex: 1;
-  background: var(--vai-input-bg);
-  border: 1px solid var(--vai-border);
-  border-radius: 10px;
-  color: var(--vai-text);
-  font-size: 13.5px;
-  font-family: inherit;
-  padding: 9px 12px;
-  outline: none;
-  resize: none;
-  min-height: 38px;
-  max-height: 100px;
-  line-height: 1.4;
-  transition: border-color 0.15s;
+  flex: 1 !important;
+  background: #0f0f23 !important;
+  border: 1px solid rgba(124, 58, 237, 0.25) !important;
+  border-radius: 10px !important;
+  color: #e2e8f0 !important;
+  font-size: 13.5px !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  padding: 9px 12px !important;
+  outline: none !important;
+  resize: none !important;
+  min-height: 38px !important;
+  max-height: 100px !important;
+  line-height: 1.4 !important;
+  transition: border-color 0.15s !important;
+  box-sizing: border-box !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
 }
 
 .vai-input::placeholder {
-  color: var(--vai-text-muted);
+  color: #94a3b8 !important;
 }
 
 .vai-input:focus {
-  border-color: var(--vai-accent);
+  border-color: #7c3aed !important;
+  outline: none !important;
 }
 
 .vai-send-btn {
-  width: 38px;
-  height: 38px;
-  background: var(--vai-accent);
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: background 0.15s, transform 0.1s;
+  width: 38px !important;
+  height: 38px !important;
+  background: #7c3aed !important;
+  border: none !important;
+  border-radius: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  transition: background 0.15s, transform 0.1s !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .vai-send-btn:hover {
-  background: var(--vai-accent-hover);
+  background: #6d28d9 !important;
 }
 
 .vai-send-btn:active {
-  transform: scale(0.93);
+  transform: scale(0.93) !important;
 }
 
 .vai-send-btn svg {
-  width: 18px;
-  height: 18px;
-  fill: #fff;
+  width: 18px !important;
+  height: 18px !important;
+  fill: #fff !important;
 }
 
 .vai-send-btn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
+  opacity: 0.45 !important;
+  cursor: not-allowed !important;
 }
 
 /* Mobile responsiveness */
 @media (max-width: 420px) {
   .vai-panel {
-    width: calc(100vw - 24px);
-    right: 12px;
-    bottom: 84px;
+    width: calc(100vw - 24px) !important;
+    right: 12px !important;
+    bottom: 84px !important;
   }
 
   .vai-launcher {
-    right: 16px;
-    bottom: 16px;
+    right: 16px !important;
+    bottom: 16px !important;
   }
 }

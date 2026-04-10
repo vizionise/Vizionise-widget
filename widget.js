@@ -35,10 +35,6 @@
       document.head.appendChild(link);
     }
 
-    // Prevent widget from causing horizontal scrollbar
-    var noScroll = document.createElement('style');
-    noScroll.textContent = 'body { overflow-x: hidden !important; }';
-    document.head.appendChild(noScroll);
   }
 
   // ─── HTML template ────────────────────────────────────────────────────────────
