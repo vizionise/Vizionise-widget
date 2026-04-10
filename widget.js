@@ -125,8 +125,11 @@
     var launcher = els.launcher;
     var panel = els.panel;
 
-    document.body.appendChild(panel);
-    document.body.appendChild(launcher);
+    var root = document.createElement('div');
+    root.style.cssText = 'position:fixed;top:0;left:0;width:0;height:0;overflow:visible;z-index:99997;pointer-events:none;';
+    root.appendChild(panel);
+    root.appendChild(launcher);
+    document.body.appendChild(root);
 
     var messagesEl = panel.querySelector('#vai-messages');
     var inputEl = panel.querySelector('#vai-input');
