@@ -122,6 +122,12 @@
   function init() {
     injectCSS();
 
+    // Prevent horizontal scrollbar caused by fixed-position widget children
+    // without touching overflow-y so Elementor vertical animations still work
+    var noHScroll = document.createElement('style');
+    noHScroll.textContent = 'html{overflow-x:hidden!important}';
+    document.head.appendChild(noHScroll);
+
     var els = buildHTML();
     var launcher = els.launcher;
     var panel = els.panel;
