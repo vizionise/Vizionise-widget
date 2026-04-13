@@ -10,36 +10,35 @@
     'What AI automations can help my business?',
   ];
 
-  // ─── CSS injection ────────────────────────────────────────────────────────────
-  // Derive the CSS URL from this script's src attribute so hosting works anywhere
-  function injectCSS() {
+  // ─── Asset URL helper ─────────────────────────────────────────────────────────
+  // Derives base URL from this script's src so assets load from the same CDN path
+  function getScriptBase() {
     var scripts = document.querySelectorAll('script[src]');
-    var cssHref = '';
-
     for (var i = 0; i < scripts.length; i++) {
       if (scripts[i].src && scripts[i].src.indexOf('widget.js') !== -1) {
-        cssHref = scripts[i].src.replace('widget.js', 'widget.css');
-        break;
+        return scripts[i].src.replace('widget.js', '');
       }
     }
-
-    // Fallback: look for the currently executing script
-    if (!cssHref && document.currentScript && document.currentScript.src) {
-      cssHref = document.currentScript.src.replace('widget.js', 'widget.css');
+    if (document.currentScript && document.currentScript.src) {
+      return document.currentScript.src.replace('widget.js', '');
     }
+    return '';
+  }
 
-    if (cssHref) {
+  // ─── CSS injection ────────────────────────────────────────────────────────────
+  function injectCSS() {
+    var base = getScriptBase();
+    if (base) {
       var link = document.createElement('link');
       link.rel = 'stylesheet';
-      link.href = cssHref;
+      link.href = base + 'widget.css';
       document.head.appendChild(link);
     }
-
   }
 
   // ─── HTML template ────────────────────────────────────────────────────────────
-  function buildHTML() {
-    // Launcher button
+  function buildHTML(logoUrl) {
+    // Launcher button — icons are black to contrast against green background
     var launcher = document.createElement('button');
     launcher.className = 'vai-launcher';
     launcher.setAttribute('aria-label', 'Open AI assistant');
@@ -47,12 +46,12 @@
     launcher.innerHTML =
       '<span class="vai-launcher-icon vai-icon-chat">' +
         '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-          '<path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="white"/>' +
+          '<path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="#000"/>' +
         '</svg>' +
       '</span>' +
       '<span class="vai-launcher-icon vai-icon-close vai-hidden">' +
         '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-          '<path d="M18 6L6 18M6 6L18 18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>' +
+          '<path d="M18 6L6 18M6 6L18 18" stroke="#000" stroke-width="2.5" stroke-linecap="round"/>' +
         '</svg>' +
       '</span>';
 
@@ -76,7 +75,9 @@
     panel.setAttribute('aria-label', 'Vizionise AI Assistant');
     panel.innerHTML =
       '<div class="vai-header">' +
-        '<div class="vai-header-avatar">AI</div>' +
+        '<div class="vai-header-avatar">' +
+          (logoUrl ? '<img src="' + logoUrl + '" alt="Vizionise"/>' : '') +
+        '</div>' +
         '<div class="vai-header-info">' +
           '<p class="vai-header-title">Vizionise AI Assistant</p>' +
           '<div class="vai-header-status"><span class="vai-status-dot"></span>Online</div>' +
@@ -127,7 +128,8 @@
     noHScroll.textContent = 'html,body{overflow-x:hidden!important;max-width:100%!important}';
     document.head.appendChild(noHScroll);
 
-    var els = buildHTML();
+    var logoUrl = getScriptBase() + 'logo.png';
+    var els = buildHTML(logoUrl);
     var launcher = els.launcher;
     var panel = els.panel;
 
