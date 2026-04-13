@@ -122,10 +122,9 @@
   function init() {
     injectCSS();
 
-    // Prevent horizontal scrollbar caused by fixed-position widget children
-    // without touching overflow-y so Elementor vertical animations still work
+    // Prevent horizontal scrollbar without affecting vertical scroll or animations
     var noHScroll = document.createElement('style');
-    noHScroll.textContent = 'html{overflow-x:hidden!important}';
+    noHScroll.textContent = 'html,body{overflow-x:hidden!important;max-width:100%!important}';
     document.head.appendChild(noHScroll);
 
     var els = buildHTML();
@@ -280,6 +279,7 @@
     messagesEl.addEventListener('click', function (e) {
       var chip = e.target.closest('.vai-prompt-chip');
       if (chip) {
+        e.stopPropagation(); // prevent document click handler from closing panel after chip removes itself from DOM
         var prompt = chip.getAttribute('data-prompt');
         sendMessage(prompt);
       }

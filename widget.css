@@ -389,15 +389,22 @@
 }
 
 /* Mobile responsiveness */
-@media (max-width: 420px) {
+@media (max-width: 480px) {
   .vai-panel {
-    width: calc(100vw - 24px) !important;
-    right: 12px !important;
-    bottom: 84px !important;
+    width: calc(100vw - 16px) !important;
+    right: 8px !important;
+    left: 8px !important;
+    bottom: 80px !important;
+    height: calc(100dvh - 110px) !important;
+    max-height: 520px !important;
   }
 
   .vai-launcher {
     right: 16px !important;
     bottom: 16px !important;
+  }
+
+  .vai-bubble {
+    font-size: 13px !important;
   }
 }
