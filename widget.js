@@ -192,6 +192,26 @@
       return wrapper;
     }
 
+    function appendError() {
+      var prompts = messagesEl.querySelector('.vai-prompts');
+      if (prompts) prompts.parentNode.removeChild(prompts);
+
+      var wrapper = document.createElement('div');
+      wrapper.className = 'vai-message vai-ai';
+
+      var bubble = document.createElement('div');
+      bubble.className = 'vai-bubble vai-bubble-error';
+      bubble.innerHTML =
+        '<span class="vai-error-icon">&#9888;</span>' +
+        '<strong>Vizionise servers are acting up.</strong><br>' +
+        'For any questions please call us directly:<br>' +
+        '<a class="vai-error-phone" href="tel:+18287853299">828-785-3299</a>';
+
+      wrapper.appendChild(bubble);
+      messagesEl.appendChild(wrapper);
+      scrollToBottom();
+    }
+
     function showTyping() {
       var wrapper = document.createElement('div');
       wrapper.className = 'vai-message vai-ai';
@@ -248,9 +268,9 @@
           hideTyping();
           appendMessage('ai', data.reply || 'No response received.');
         })
-        .catch(function (err) {
+        .catch(function () {
           hideTyping();
-          appendMessage('ai', 'Sorry, I could not connect to the server. Please try again. (' + err.message + ')');
+          appendError();
         })
         .finally(function () {
           setLoading(false);
