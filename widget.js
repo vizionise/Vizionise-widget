@@ -88,6 +88,12 @@
       '.vai-typing span:nth-child(3){animation-delay:.4s!important}',
       '@keyframes vai-bounce{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-6px);opacity:1;background:#00C036}}',
 
+      /* CTA button */
+      '.vai-cta-btn{display:block!important;margin:0 12px 10px!important;padding:10px 16px!important;background:linear-gradient(135deg,#00C036,#009929)!important;color:#000!important;font-weight:700!important;font-size:13px!important;text-align:center!important;text-decoration:none!important;border-radius:10px!important;letter-spacing:.01em!important;transition:opacity .15s!important;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;box-sizing:border-box!important;flex-shrink:0!important}',
+      '.vai-cta-btn:hover{opacity:.88!important}',
+      '.vai-link{color:#00C036!important;text-decoration:underline!important;word-break:break-all!important}',
+      '.vai-link:hover{opacity:.8!important}',
+
       /* Input row */
       '.vai-input-row{padding:12px!important;border-top:1px solid #1a1a1a!important;display:flex!important;gap:8px!important;align-items:flex-end!important;background:#000!important;flex-shrink:0!important}',
       '.vai-input{flex:1!important;background:#0b0b0b!important;border:1px solid #1a1a1a!important;border-radius:10px!important;color:#fff!important;font-size:13.5px!important;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;padding:9px 12px!important;outline:none!important;resize:none!important;min-height:38px!important;max-height:100px!important;line-height:1.4!important;transition:border-color .2s,box-shadow .2s!important;box-sizing:border-box!important;-webkit-appearance:none!important;appearance:none!important}',
@@ -159,6 +165,7 @@
         '</div>' +
         promptsHTML +
       '</div>' +
+      '<a class="vai-cta-btn" href="https://vizionise.com/contact/" target="_blank" rel="noopener">Book a Free Discovery Call</a>' +
       '<div class="vai-input-row">' +
         '<textarea class="vai-input" id="vai-input" rows="1" placeholder="Type a message..." aria-label="Message input"></textarea>' +
         '<button class="vai-send-btn" id="vai-send-btn" aria-label="Send message">' +
@@ -172,6 +179,12 @@
   }
 
   // ─── Helpers ──────────────────────────────────────────────────────────────────
+  function linkify(str) {
+    return str.replace(/(https?:\/\/[^\s<]+)/g, function(url) {
+      return '<a class="vai-link" href="' + url + '" target="_blank" rel="noopener">' + url + '</a>';
+    });
+  }
+
   function escapeHTML(str) {
     return str
       .replace(/&/g, '&amp;')
@@ -260,7 +273,11 @@
 
       var bubble = document.createElement('div');
       bubble.className = 'vai-bubble';
-      bubble.textContent = text;
+      if (role === 'ai') {
+        bubble.innerHTML = linkify(escapeHTML(text));
+      } else {
+        bubble.textContent = text;
+      }
 
       wrapper.appendChild(bubble);
       messagesEl.appendChild(wrapper);
