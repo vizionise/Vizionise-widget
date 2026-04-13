@@ -46,7 +46,7 @@
 
       /* Header */
       '.vai-header{background:#000!important;padding:14px 16px!important;display:flex!important;align-items:center!important;gap:10px!important;border-bottom:1px solid #1a1a1a!important;flex-shrink:0!important}',
-      '.vai-header-avatar{width:38px!important;height:38px!important;border-radius:50%!important;background:#000!important;border:1px solid #1a1a1a!important;display:flex!important;align-items:center!important;justify-content:center!important;flex-shrink:0!important;overflow:hidden!important}',
+      '.vai-header-avatar{width:38px!important;height:38px!important;border-radius:50%!important;background:#00ff85!important;border:1px solid #00ff85!important;display:flex!important;align-items:center!important;justify-content:center!important;flex-shrink:0!important;overflow:hidden!important}',
       '.vai-header-avatar img{width:100%!important;height:100%!important;object-fit:contain!important;border-radius:50%!important;display:block!important}',
       '.vai-header-info{flex:1!important}',
       '.vai-header-title{color:#fff!important;font-size:14px!important;font-weight:600!important;line-height:1.2!important;margin:0!important}',
