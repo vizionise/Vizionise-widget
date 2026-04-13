@@ -1,5 +1,6 @@
 (function () {
   'use strict';
+  console.log('[VAI] Script parsed and IIFE running');
 
   // ─── Config ──────────────────────────────────────────────────────────────────
   var API_URL = 'https://vizionise-ai-backend-production.up.railway.app/chat';
@@ -185,7 +186,11 @@
 
   // ─── Widget controller ────────────────────────────────────────────────────────
   function init() {
-    injectCSS();
+    console.log('[VAI] init() called, document.body:', document.body);
+    try {
+      injectCSS();
+      console.log('[VAI] CSS injected');
+    } catch(e) { console.error('[VAI] injectCSS failed:', e); }
 
     // Prevent horizontal scrollbar without affecting vertical scroll or animations
     var noHScroll = document.createElement('style');
@@ -193,7 +198,12 @@
     document.head.appendChild(noHScroll);
 
     var logoUrl = getScriptBase() + 'logo.png';
-    var els = buildHTML(logoUrl);
+    console.log('[VAI] logoUrl:', logoUrl);
+    var els;
+    try {
+      els = buildHTML(logoUrl);
+      console.log('[VAI] HTML built');
+    } catch(e) { console.error('[VAI] buildHTML failed:', e); return; }
     var launcher = els.launcher;
     var panel = els.panel;
 
@@ -201,7 +211,10 @@
     root.style.cssText = 'position:fixed;top:0;left:0;width:0;height:0;overflow:visible;z-index:99997;pointer-events:none;';
     root.appendChild(panel);
     root.appendChild(launcher);
-    document.body.appendChild(root);
+    try {
+      document.body.appendChild(root);
+      console.log('[VAI] Root appended to body. Launcher in DOM:', !!document.querySelector(".vai-launcher"));
+    } catch(e) { console.error('[VAI] appendChild failed:', e); }
 
     var messagesEl = panel.querySelector('#vai-messages');
     var inputEl = panel.querySelector('#vai-input');
